@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Signup{% endblock title %}
+{% block content %}
+
+
+<div class="card bg-light p-5">
+  
+  <h1 class = "text-dark">Sign Up</h1>
+
+  <form action="/auther/signup/", method="post"> {%csrf_token%}
+    <br>
+  
+    <label for="email">Email</label>
+    <div class="form-group">
+      <input type="email" class="form-control p-2" name="email" id="email" required>
+    </div>
+    <label for="password">Password</label>
+    <div class="form-group">
+      <input type="password" class="form-control p-2" name="password" id="password" required>
+    </div>
+    <label for="pass2">Confirm Password</label>
+    <div class="form-group">
+      <input type="password" class="form-control p-2" name="pass2" id="pass2" required>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-dark">SignIn</button>
+    <br>
+    Arleady User? <a href="auther/login/">Login</a>
+  
+  </form>
+
+</div>
+
+
+
+
+
+{% endblock content %}
