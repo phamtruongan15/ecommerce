@@ -1,1 +1,41 @@
-<h1>login</h1>
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+
+
+<div class="card bg-light p-5">
+  
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+  </div>
+  {% endfor %}
+  <h1 class = "text-dark">Login</h1>
+
+  <form action="/auther/login/", method="post"> {%csrf_token%}
+    <br>
+  
+    <label for="email">Email</label>
+    <div class="form-group">
+      <input type="email" class="form-control p-2" name="email" id="email" required>
+    </div>
+    <label for="password">Password</label>
+    <div class="form-group">
+      <input type="password" class="form-control p-2" name="password" id="password" required>
+    </div>
+   
+    <br>
+    <button type="submit" class="btn btn-dark">Login</button>
+    <br>
+    New User? <a href="auther/signup/">Signup</a>
+  
+  </form>
+
+</div>
+
+
+
+
+
+{% endblock content %}

@@ -11,20 +11,33 @@ def signup(request):
             messages.warning(request, "Password is not matching")
             return render(request,'signup.html')
         try:
-            if User.objects.get(user=email):
-                return HttpResponse('email already exist')
+            if User.objects.get(username=email):
+                messages.info(request, "Password is not matching")
+                # return HttpResponse('email already exist')
+                return render(request,'signup.html')
         except Exception as identifier:
             pass
         
         user=User.objects.create_user(email,email,password)
+        user.is_active=False
         user.save()
+        email_subject = " activate Your Account"
+        message = render_to_string('activate.html', {
+            'user':user,
+            'domain': '127.0.0.1:8000',
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': generate_token.make_token(user)
+            
+        })
+
+        
         return HttpResponse("User created",email)    
                   
     print("hello is fuction ")
     return render(request,"signup.html")
 
 def handlelogin(request):
-    return render(request,"/login.html")
+    return render(request,"login.html")
 
 def handlelogout(request):
     return redirect('/auther/login')

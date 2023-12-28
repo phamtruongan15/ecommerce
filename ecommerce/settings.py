@@ -117,6 +117,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+# sending emails
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'hr@airobotica.in'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USER_TLS = True
+EAMIL_BLACKEND = 'django.core.mail.blackends.smtp.Emailblackend'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
